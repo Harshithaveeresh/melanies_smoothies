@@ -2,7 +2,7 @@
 import streamlit as st
 from snowflake.snowpark.functions import col
 import requests
-from urllib.parse import quote
+
 st.title('My Parents New Healthy Diner')
 # Write directly to the app
 st.title(f":cup_with_straw: Customize Your Smoothie!:cup_with_straw:")
@@ -42,6 +42,8 @@ if ingredients_list:
         st.subheader(fruit_chosen + ' Nutrition Information')
         smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit" + fruit_chosen)
         st_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
+
+  
 
     my_insert_stmt = (
         "INSERT INTO smoothies.public.orders(ingredients, name_on_order) "
