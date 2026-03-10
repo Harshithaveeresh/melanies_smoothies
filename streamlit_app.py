@@ -62,4 +62,4 @@ if ingredients_list:
     if time_to_insert:
         session.sql(my_insert_stmt, params=[ingredients_string, name_on_order, order_filled_flag]).collect()
         st.success(f"Your Smoothie is ordered, {name_on_order}!")
-``
+
