@@ -2,6 +2,7 @@
 import streamlit as st
 from snowflake.snowpark.functions import col
 import requests
+from urllib.parse import quote
 st.title('My Parents New Healthy Diner')
 # Write directly to the app
 st.title(f":cup_with_straw: Customize Your Smoothie!:cup_with_straw:")
@@ -43,8 +44,19 @@ if ingredients_list:
         st.write('The search value for ', fruit_chosen,' is ', search_on, '.')
       
         st.subheader(fruit_chosen + ' Nutrition Information')
+        encoded = quote(str(search_on))
+
         smoothiefroot_response = requests.get(f"https://my.smoothiefroot.com/api/fruit/{search_on}")
-        st_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
+        st_df = st.dataframe(data=smoothiefroot_response.json()
+                             
+        # ✅ FIX 2: If API returns {"error": "..."} show graceful message
+        if isinstance(data, dict) and "error" in data:
+            st.error(data["error"])
+            continue
+
+        # Show full nutrition table
+        st.dataframe(data, use_container_width=True)
+
        
 
 
