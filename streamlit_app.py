@@ -13,9 +13,6 @@ name_on_order= st.text_input('Name on Smoothies:')
 st.write ('The name on your Smoothie will be:', name_on_order)
 
 
-import snowflake.connector
-st.write("Snowflake connector imported successfully!")
-
 cnx = st.connection("snowflake")
 session = cnx.session()
 
