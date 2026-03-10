@@ -47,7 +47,7 @@ if ingredients_list:
         encoded = quote(str(search_on))
 
         smoothiefroot_response = requests.get(f"https://my.smoothiefroot.com/api/fruit/{search_on}")
-        st_df = st.dataframe(data=smoothiefroot_response.json()
+        st_df = st.dataframe(data=smoothiefroot_response.json())
                              
         # ✅ FIX 2: If API returns {"error": "..."} show graceful message
         if isinstance(data, dict) and "error" in data:
