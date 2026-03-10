@@ -12,8 +12,6 @@ st.write(
 name_on_order= st.text_input('Name on Smoothies:')
 st.write ('The name on your Smoothie will be:', name_on_order)
 
-st.write("Secrets keys:", list(st.secrets.keys()))
-st.write("Snowflake section:", st.secrets.get("snowflake", "MISSING"))
 
 import snowflake.connector
 st.write("Snowflake connector imported successfully!")
