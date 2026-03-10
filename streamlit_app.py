@@ -44,8 +44,7 @@ if ingredients_list:
       
         st.subheader(fruit_chosen + ' Nutrition Information')
         smoothiefroot_response = requests.get(f"https://my.smoothiefroot.com/api/fruit/{search_on}")
-       
-         result = smoothiefroot_response.json()   # ⭐ ADDED THIS LINE
+        result = smoothiefroot_response.json()   # ⭐ ADDED THIS LINE
 
         # ⭐ ADDED: Handle fruits NOT in API (like Ximenia)
         if "error" in result:
