@@ -44,7 +44,15 @@ if ingredients_list:
       
         st.subheader(fruit_chosen + ' Nutrition Information')
         smoothiefroot_response = requests.get(f"https://my.smoothiefroot.com/api/fruit/{search_on}")
-        sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
+       
+         result = smoothiefroot_response.json()   # ⭐ ADDED THIS LINE
+
+        # ⭐ ADDED: Handle fruits NOT in API (like Ximenia)
+        if "error" in result:
+            st.error(result["error"])
+        else:
+            sf_df = st.dataframe(data=result, use_container_width=True)
+
 
 
     #st.write(ingredients_string)
